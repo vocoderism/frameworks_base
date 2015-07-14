@@ -172,7 +172,12 @@ static bool isCamcorderQualityKnown(int quality)
              (quality >= CAMCORDER_QUALITY_HIGH_SPEED_LIST_START &&
               quality <= CAMCORDER_QUALITY_HIGH_SPEED_LIST_END) ||
              (quality >= CAMCORDER_QUALITY_VENDOR_START &&
-              quality <= CAMCORDER_QUALITY_VENDOR_END));
+              quality <= CAMCORDER_QUALITY_VENDOR_END)
+#ifdef QCOM_HARDWARE
+            || (quality >= CAMCORDER_QUALITY_VENDOR_START &&
+             quality <= CAMCORDER_QUALITY_VENDOR_END)
+#endif
+            );
 }
 
 static jobject
