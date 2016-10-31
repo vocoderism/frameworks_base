@@ -735,7 +735,7 @@ final class DefaultPermissionGrantPolicy {
                     "org.chromium.chrome", userId);
             if (chromiumPackage != null) {
                 grantRuntimePermissionsLPw(chromiumPackage, CONTACTS_PERMISSIONS, userId);
-                grantRuntimePermissionsLPw(chromiumPackage, STORAGE_PERMISSIONS, userId);
+                grantRuntimePermissionsLPw(chromiumPackage, STORAGE_PERMISSIONS, true, userId);
             }
 
             // Ringtone Picker
