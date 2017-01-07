@@ -86,4 +86,7 @@
          Used to decide if we show pulse settings -->
     <bool name="config_ledCanPulse">false</bool>
 
+    <!-- Whether to show emergency button in power menu -->
+    <bool name="config_showEmergencyButtonInPowerMenu">false</bool>
+
 </resources>
