@@ -80,4 +80,9 @@
   <!-- Global actions -->
   <java-symbol type="array" name="config_custom_globalActionsList" />
 
+  <!-- framework instrumentation and AppProtect features -->
+  <java-symbol type="string" name="config_optionalPackageVerifierName" />
+  <java-symbol type="integer" name="config_sms_authorization_timeout_ms" />
+  <java-symbol type="bool" name="config_sms_authorization_enabled" />
+
 </resources>
