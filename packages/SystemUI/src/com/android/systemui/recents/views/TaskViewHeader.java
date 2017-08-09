@@ -281,6 +281,7 @@ public class TaskViewHeader extends FrameLayout
                 ? 2 * mHeaderBarHeight
                 : mHeaderBarHeight);
         title.setLayoutParams(lp);
+        title.setTextDirection(View.TEXT_DIRECTION_LOCALE);
         //move task button
         if (thirdButton != null) {
             lp = new FrameLayout.LayoutParams(mHeaderBarHeight, mHeaderBarHeight, Gravity.END);
