@@ -2981,4 +2981,8 @@
 
     <!-- Allow SystemUI to show the shutdown dialog -->
     <bool name="config_showSysuiShutdown">true</bool>
+    
+    <!-- Dual LTE capability -->
+    <bool name="config_dual_LTE_capability">false</bool>
+
 </resources>
