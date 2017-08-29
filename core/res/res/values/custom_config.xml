@@ -56,4 +56,8 @@
     <!-- Wheter to enable doze always on -->
     <bool name="config_enableDozeAlwaysOn">false</bool>
 
+    <!-- Button brightness -->
+    <integer name="config_buttonBrightnessSettingDefault">255</integer>
+    <bool name="config_deviceHasVariableButtonBrightness">false</bool>
+
 </resources>
