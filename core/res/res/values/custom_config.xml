@@ -53,4 +53,7 @@
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
     <bool name="config_notifyClientOnFingerprintCancelSuccess">false</bool>
 
+    <!-- Wheter to enable doze always on -->
+    <bool name="config_enableDozeAlwaysOn">false</bool>
+
 </resources>
