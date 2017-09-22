@@ -66,4 +66,8 @@
     <!-- VPN icon -->
     <string name="status_bar_vpn">VPN</string>
 
+    <!-- Lockscreen tuner -->    
+    <string name="lockscreen_default">Default</string>
+    <string name="lockscreen_hidden">None</string>
+
 </resources>
