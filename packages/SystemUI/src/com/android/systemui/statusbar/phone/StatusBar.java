@@ -340,7 +340,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private static final int STATUS_OR_NAV_TRANSIENT =
             View.STATUS_BAR_TRANSIENT | View.NAVIGATION_BAR_TRANSIENT;
-    private static final long AUTOHIDE_TIMEOUT_MS = 3000;
+    private static final long AUTOHIDE_TIMEOUT_MS = 2250;
 
     /** The minimum delay in ms between reports of notification visibility. */
     private static final int VISIBILITY_REPORT_MIN_DELAY_MS = 500;
@@ -560,14 +560,12 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected DozeScrimController mDozeScrimController;
     private final UiOffloadThread mUiOffloadThread = Dependency.get(UiOffloadThread.class);
 
-    private final Runnable mAutohide = new Runnable() {
-        @Override
-        public void run() {
-            int requested = mSystemUiVisibility & ~STATUS_OR_NAV_TRANSIENT;
-            if (mSystemUiVisibility != requested) {
-                notifyUiVisibilityChanged(requested);
-            }
-        }};
+    private final Runnable mAutohide = () -> {
+        int requested = mSystemUiVisibility & ~STATUS_OR_NAV_TRANSIENT;
+        if (mSystemUiVisibility != requested) {
+            notifyUiVisibilityChanged(requested);
+        }
+    };
 
     private boolean mWaitingForKeyguardExit;
     protected boolean mDozing;
@@ -3377,6 +3375,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
         // manually dismiss the volume panel when interacting with the nav bar
         if (changing && interacting && barWindow == StatusBarManager.WINDOW_NAVIGATION_BAR) {
+            touchAutoDim();
             dismissVolumeDialog();
         }
         checkBarModes();
@@ -3409,6 +3408,16 @@ public class StatusBar extends SystemUI implements DemoMode,
     private void scheduleAutohide() {
         cancelAutohide();
         mHandler.postDelayed(mAutohide, AUTOHIDE_TIMEOUT_MS);
+    }
+
+    public void touchAutoDim() {
+        if (mNavigationBar != null) {
+            mNavigationBar.getBarTransitions().setAutoDim(false);
+        }
+        mHandler.removeCallbacks(mAutoDim);
+        if (mState != StatusBarState.KEYGUARD && mState != StatusBarState.SHADE_LOCKED) {
+            mHandler.postDelayed(mAutoDim, AUTOHIDE_TIMEOUT_MS);
+        }
     }
 
     void checkUserAutohide(View v, MotionEvent event) {
@@ -4817,6 +4826,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         updateReportRejectedTouchVisibility();
         updateDozing();
         updateTheme();
+        touchAutoDim();
         mNotificationShelf.setStatusBarState(state);
     }
 
@@ -7496,4 +7506,10 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
     }
     // End Extra BaseStatusBarMethods.
+
+    private final Runnable mAutoDim = () -> {
+        if (mNavigationBar != null) {
+            mNavigationBar.getBarTransitions().setAutoDim(true);
+        }
+    };
 }
