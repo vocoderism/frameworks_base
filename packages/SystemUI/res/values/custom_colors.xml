@@ -18,14 +18,16 @@
 -->
 <resources>
     <!-- Navbar icon Colors -->
-    <color name="icon_color_back">@android:color/white</color>
-    <color name="icon_color_ime_switcher">@android:color/white</color>
-    <color name="icon_color_split_screen">@android:color/white</color>
-    <color name="icon_color_home">@android:color/white</color>
-    <color name="icon_color_overview">@android:color/white</color>
-    <color name="icon_color_back_dark">@android:color/black</color>
-    <color name="icon_color_ime_switcher_dark">@android:color/black</color>
-    <color name="icon_color_split_screen_dark">@android:color/black</color>
-    <color name="icon_color_home_dark">@android:color/black</color>
-    <color name="icon_color_overview_dark">@android:color/black</color>
+    <color name="navbar_color_light_custom">@android:color/white</color>
+    <color name="navbar_color_dark_custom">#7a000000</color>
+    <color name="icon_color_back">@color/navbar_color_light_custom</color>
+    <color name="icon_color_ime_switcher">@color/navbar_color_light_custom</color>
+    <color name="icon_color_split_screen">@color/navbar_color_light_custom</color>
+    <color name="icon_color_home">@color/navbar_color_light_custom</color>
+    <color name="icon_color_overview">@color/navbar_color_light_custom</color>
+    <color name="icon_color_back_dark">@color/navbar_color_dark_custom</color>
+    <color name="icon_color_ime_switcher_dark">@color/navbar_color_dark_custom</color>
+    <color name="icon_color_split_screen_dark">@color/navbar_color_dark_custom</color>
+    <color name="icon_color_home_dark">@color/navbar_color_dark_custom</color>
+    <color name="icon_color_overview_dark">@color/navbar_color_dark_custom</color>
 </resources>
