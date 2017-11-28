@@ -63,4 +63,7 @@
     <!-- Whether device has dash charging support -->
     <bool name="config_hasDashCharger">false</bool>
 
+    <!--  Whether to show navbar in lock task mode -->
+    <bool name="config_showNavbarInLockTaskMode">false</bool>
+
 </resources>
