@@ -137,6 +137,9 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
     // Theme and colors
     private SysuiColorExtractor mColorExtractor;
     private boolean mUsingDarkText;
+    
+    // Reload task stack pending
+    public static boolean forceReloadTaskStackPending = false;
 
     /**
      * A common Runnable to finish Recents by launching Home with an animation depending on the
@@ -401,9 +404,13 @@ public class RecentsActivity extends Activity implements ViewTreeObserver.OnPreD
 
         // Notify of the next draw
         mRecentsView.getViewTreeObserver().addOnPreDrawListener(mRecentsDrawnEventListener);
-
+        
         if (isInMultiWindowMode()) {
             reloadTaskStack(true /* isInMultiWindowMode */, false /* sendConfigChangedEvent */);
+        }else if(forceReloadTaskStackPending){
+            forceReloadTaskStackPending = false;
+            reloadTaskStack(true /* isInMultiWindowMode */, true /* sendConfigChangedEvent */);
+            reloadTaskStack(false /* isInMultiWindowMode */, true /* sendConfigChangedEvent */);
         }
     }
 
