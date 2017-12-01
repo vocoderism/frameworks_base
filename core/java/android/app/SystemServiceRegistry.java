@@ -149,6 +149,9 @@ import com.android.internal.policy.PhoneLayoutInflater;
 
 import java.util.HashMap;
 
+import com.android.internal.util.custom.CustomSettings;
+import com.android.internal.util.custom.ICustomSettingsService;
+
 /**
  * Manages all of the system services that can be returned by {@link Context#getSystemService}.
  * Used by {@link ContextImpl}.
@@ -871,6 +874,15 @@ final class SystemServiceRegistry {
                 return new VrManager(IVrManager.Stub.asInterface(b));
             }
         });
+        
+        registerService(Context.CUSTOM_SETTINGS_SERVICE, CustomSettings.class,
+                new CachedServiceFetcher<CustomSettings>() {
+            @Override
+            public CustomSettings createService(ContextImpl ctx) {
+                IBinder binder = ServiceManager.getService(Context.CUSTOM_SETTINGS_SERVICE);
+                ICustomSettingsService service = ICustomSettingsService.Stub.asInterface(binder);
+                return new CustomSettings(ctx.getOuterContext(), service);
+            }});
     }
 
     /**
@@ -884,6 +896,22 @@ final class SystemServiceRegistry {
      * Gets a system service from a given context.
      */
     public static Object getSystemService(ContextImpl ctx, String name) {
+        if (name.equals(Context.CUSTOM_SETTINGS_SERVICE)){
+            Context context = ctx.getOuterContext();
+            boolean isFromSystem = false;
+            String packageName = context.getPackageName();
+            if (packageName == null && android.os.Process.SYSTEM_UID == context.getApplicationInfo().uid) {
+                packageName = "android";
+            }
+            if (packageName.equals("com.android.systemui") || packageName.equals("com.android.keyguard") ||
+                    packageName.equals("com.android.settings") || packageName.equals("android") ||
+                    context.getApplicationInfo().uid == android.os.Process.SYSTEM_UID) {
+                isFromSystem = true;
+            }
+            if (!isFromSystem){
+                return null;
+            }
+        }
         ServiceFetcher<?> fetcher = SYSTEM_SERVICE_FETCHERS.get(name);
         return fetcher != null ? fetcher.getService(ctx) : null;
     }

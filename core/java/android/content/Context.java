@@ -4026,6 +4026,16 @@ public abstract class Context {
     public static final String VR_SERVICE = "vrmanager";
 
     /**
+     * Use with {@link #getSystemService} to retrieve a
+     * {com.android.internal.util.custom.CustomSettings} for accessing the CustomSettings service.
+     *
+     * @see #getSystemService
+     * @see com.android.internal.util.custom.CustomSettings
+     * @hide
+     */
+    public static final String CUSTOM_SETTINGS_SERVICE = "custom_settings";
+
+    /**
      * Determine whether the given permission is allowed for a particular
      * process and user ID running in the system.
      *

@@ -407,6 +407,8 @@ LOCAL_SRC_FILES += \
 	core/java/com/android/internal/textservice/ISpellCheckerSessionListener.aidl \
 	core/java/com/android/internal/textservice/ITextServicesManager.aidl \
 	core/java/com/android/internal/textservice/ITextServicesSessionListener.aidl \
+	core/java/com/android/internal/util/custom/ICustomSettingsCallback.aidl \
+	core/java/com/android/internal/util/custom/ICustomSettingsService.aidl \
 	core/java/com/android/internal/view/IDragAndDropPermissions.aidl \
 	core/java/com/android/internal/view/IInputContext.aidl \
 	core/java/com/android/internal/view/IInputContextCallback.aidl \

@@ -126,6 +126,8 @@ import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
 
+import com.android.internal.util.custom.CustomSettingsService;
+
 import static android.view.Display.DEFAULT_DISPLAY;
 
 public final class SystemServer {
@@ -703,6 +705,7 @@ public final class SystemServer {
         ConsumerIrService consumerIr = null;
         MmsServiceBroker mmsService = null;
         HardwarePropertiesManagerService hardwarePropertiesService = null;
+        CustomSettingsService customSettingsService = null;
 
         boolean disableStorage = SystemProperties.getBoolean("config.disable_storage", false);
         boolean disableBluetooth = SystemProperties.getBoolean("config.disable_bluetooth", false);
@@ -798,6 +801,11 @@ public final class SystemServer {
             traceBeginAndSlog("InstallSystemProviders");
             mActivityManagerService.installSystemProviders();
             traceEnd();
+
+            traceBeginAndSlog("CustomSettingsService");
+            customSettingsService = new CustomSettingsService(context);
+            ServiceManager.addService(Context.CUSTOM_SETTINGS_SERVICE, customSettingsService);
+            Trace.traceEnd(Trace.TRACE_TAG_SYSTEM_SERVER);
 
             traceBeginAndSlog("StartVibratorService");
             vibrator = new VibratorService(context);
