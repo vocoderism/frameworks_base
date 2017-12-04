@@ -61,7 +61,8 @@
 
     <!-- Button brightness -->
     <integer name="config_buttonBrightnessSettingDefault">255</integer>
-    <bool name="config_deviceHasVariableButtonBrightness">false</bool>
+    <bool name="config_deviceHasVariableButtonBrightness">false</bool>    
+    <bool name="config_deviceHasButtonBacklight">false</bool>
 
     <!--  Whether to show navbar in lock task mode -->
     <bool name="config_showNavbarInLockTaskMode">false</bool>
