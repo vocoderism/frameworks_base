@@ -183,6 +183,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import com.android.internal.util.custom.NavbarUtils;
+
 public class ActivityStackSupervisor extends ConfigurationContainer implements DisplayListener {
     private static final String TAG = TAG_WITH_CLASS_NAME ? "ActivityStackSupervisor" : TAG_AM;
     private static final String TAG_FOCUS = TAG + POSTFIX_FOCUS;
@@ -4614,6 +4616,10 @@ public class ActivityStackSupervisor extends ConfigurationContainer implements D
                         throw new RuntimeException(ex);
                     } finally {
                         mLockTaskModeState = LOCK_TASK_MODE_NONE;
+                    }
+                    if (NavbarUtils.shouldShowNavbarInLockTaskMode(mService.mContext)){
+                        NavbarUtils.setNavigationBarEnabled(mService.mContext, NavbarUtils.isNavigationBarPreviouslyEnabled(mService.mContext));
+                        NavbarUtils.setNavigationBarPreviouslyEnabled(mService.mContext);
                     }
                 } break;
                 case SHOW_LOCK_TASK_ESCAPE_MESSAGE_MSG: {

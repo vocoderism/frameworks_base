@@ -554,6 +554,9 @@
     <!-- Input method picker -->
     <protected-broadcast android:name="android.settings.SHOW_INPUT_METHOD_PICKER" />
 
+    <!-- Lock task mode changed -->
+    <protected-broadcast android:name="android.os.action.LOCK_TASK_MODE_CHANGED" />
+
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
     <!-- ====================================================================== -->
