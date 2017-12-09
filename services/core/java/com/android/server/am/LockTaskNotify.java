@@ -24,8 +24,11 @@ import android.os.SystemClock;
 import android.util.Slog;
 import android.view.WindowManager;
 import android.widget.Toast;
+import android.content.Intent;
 
 import com.android.internal.R;
+
+import com.android.internal.util.custom.NavbarUtils;
 
 /**
  *  Helper to manage showing/hiding a image to notify them that they are entering
@@ -34,6 +37,8 @@ import com.android.internal.R;
 public class LockTaskNotify {
     private static final String TAG = "LockTaskNotify";
     private static final long SHOW_TOAST_MINIMUM_INTERVAL = 1000;
+
+    private static final String ACTION_LOCK_TASK_MODE_CHANGED = "android.os.action.LOCK_TASK_MODE_CHANGED";
 
     private final Context mContext;
     private final H mHandler;
@@ -72,6 +77,8 @@ public class LockTaskNotify {
     }
 
     public void show(boolean starting) {
+        Intent intent = new Intent(ACTION_LOCK_TASK_MODE_CHANGED).addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+        mContext.sendBroadcast(intent);
         int showString = R.string.lock_to_app_exit;
         if (starting) {
             showString = R.string.lock_to_app_start;
