@@ -491,7 +491,7 @@ public class TaskView extends FixedSizeFrameLayout implements Task.TaskCallbacks
      *                       {@param fadeIn} is true.
      */
     public void showActionButton(boolean fadeIn, int fadeInDuration) {
-        mActionButtonView.setVisibility(View.VISIBLE);
+/*        mActionButtonView.setVisibility(View.VISIBLE);
 
         if (fadeIn && mActionButtonView.getAlpha() < 1f) {
             mActionButtonView.animate()
@@ -506,7 +506,7 @@ public class TaskView extends FixedSizeFrameLayout implements Task.TaskCallbacks
             mActionButtonView.setScaleY(1f);
             mActionButtonView.setAlpha(1f);
             mActionButtonView.setTranslationZ(mActionButtonTranslationZ);
-        }
+        }*/
     }
 
     /**
@@ -516,6 +516,7 @@ public class TaskView extends FixedSizeFrameLayout implements Task.TaskCallbacks
      */
     public void hideActionButton(boolean fadeOut, int fadeOutDuration, boolean scaleDown,
             final Animator.AnimatorListener animListener) {
+/*
         if (fadeOut && mActionButtonView.getAlpha() > 0f) {
             if (scaleDown) {
                 float toScale = 0.9f;
@@ -544,6 +545,7 @@ public class TaskView extends FixedSizeFrameLayout implements Task.TaskCallbacks
                 animListener.onAnimationEnd(null);
             }
         }
+*/
     }
 
     /**** TaskStackAnimationHelper.Callbacks Implementation ****/
