@@ -203,6 +203,16 @@ public class NavBarTuner extends TunerPreferenceFragment {
             String val = (String) newValue;
             if ("default".equals(val)) val = null;
             Dependency.get(TunerService.class).setValue(NAV_BAR_VIEWS, val);
+            mShowNavbar.setEnabled(false);
+            NavbarUtils.reloadNavigationBar(getActivity());
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (mShowNavbar != null){
+                        mShowNavbar.setEnabled(true);
+                    }
+                }
+            }, 1000);
             return true;
         });
     }

@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.provider.Settings;
 import android.os.UserHandle;
 import android.os.RemoteException;
+import android.os.Handler;
 
 public class NavbarUtils {
 
@@ -48,6 +49,16 @@ public class NavbarUtils {
     public static void setNavigationBarEnabled(Context context, Boolean enabled){
         Settings.Secure.putIntForUser(context.getContentResolver(),
                 Settings.Secure.NAVIGATION_BAR_ENABLED, enabled ? 1 : 0, UserHandle.USER_CURRENT);
+    }
+
+    public static void reloadNavigationBar(Context context){
+        setNavigationBarEnabled(context, false);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setNavigationBarEnabled(context, true);
+            }
+        }, 1000);
     }
 
     public static boolean isNavigationBarPreviouslyEnabled(Context context){
