@@ -179,7 +179,10 @@ public class NavBarTuner extends TunerPreferenceFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mTunables.forEach(t -> Dependency.get(TunerService.class).removeTunable(t));
+        try {
+            mTunables.forEach(t -> Dependency.get(TunerService.class).removeTunable(t));
+        }catch (Exception e){
+        }
         getContext().unregisterReceiver(mLockTaskReceiver);
     }
 
