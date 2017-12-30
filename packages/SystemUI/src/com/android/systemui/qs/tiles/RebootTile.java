@@ -27,13 +27,18 @@ import com.android.systemui.R;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
+import com.android.systemui.Dependency;
+import com.android.systemui.plugins.ActivityStarter;
+import com.android.systemui.statusbar.policy.KeyguardMonitor;
 
 public class RebootTile extends QSTileImpl<BooleanState> {
 
     private boolean mRebootToRecovery = false;
+    private final KeyguardMonitor mKeyguard;
 
     public RebootTile(QSHost host) {
         super(host);
+        mKeyguard = Dependency.get(KeyguardMonitor.class);
     }
 
     @Override
@@ -49,7 +54,21 @@ public class RebootTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleLongClick() {
-        mHost.collapsePanels();
+        if (mRebootToRecovery && mKeyguard.isSecure() && mKeyguard.isShowing()) {
+            Dependency.get(ActivityStarter.class).postQSRunnableDismissingKeyguard(() -> {
+                onLongClick(true);
+            });
+            return;
+        }
+        onLongClick(mKeyguard.isShowing());
+    }
+
+    private void onLongClick(boolean forceCollapse){
+        if (forceCollapse){
+            mHost.forceCollapsePanels();
+        }else{
+            mHost.collapsePanels();
+        }
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {

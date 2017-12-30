@@ -27,14 +27,19 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
+import com.android.systemui.Dependency;
+import com.android.systemui.plugins.ActivityStarter;
+import com.android.systemui.statusbar.policy.KeyguardMonitor;
 
 /** Quick settings tile: Screenshot **/
 public class ScreenshotTile extends QSTileImpl<BooleanState> {
 
     private boolean mRegion = false;
+    private final KeyguardMonitor mKeyguard;
 
     public ScreenshotTile(QSHost host) {
         super(host);
+        mKeyguard = Dependency.get(KeyguardMonitor.class);
     }
 
     @Override
@@ -55,13 +60,26 @@ public class ScreenshotTile extends QSTileImpl<BooleanState> {
 
     @Override
     public void handleLongClick() {
-        mHost.collapsePanels();
+        if (mKeyguard.isSecure() && mKeyguard.isShowing()) {
+            Dependency.get(ActivityStarter.class).postQSRunnableDismissingKeyguard(() -> {
+                onLongClick(true);
+            });
+            return;
+        }
+        onLongClick(mKeyguard.isShowing());
+    }
 
-        //finish collapsing the panel
-        try {
-             Thread.sleep(1000); //1s
-        } catch (InterruptedException ie) {}
-        CustomUtils.takeScreenshot(mRegion ? false : true);
+    private void onLongClick(boolean forceCollapse){
+        if (forceCollapse){
+            mHost.forceCollapsePanels();
+        }else{
+            mHost.collapsePanels();
+        }
+        mUiHandler.postDelayed(new Runnable() {
+                                   public void run() {
+                                       CustomUtils.takeScreenshot(mRegion ? false : true);
+                                   }
+                               }, 1000);
     }
 
     @Override

@@ -30,12 +30,17 @@ import com.android.systemui.qs.QSHost;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
+import com.android.systemui.Dependency;
+import com.android.systemui.plugins.ActivityStarter;
+import com.android.systemui.statusbar.policy.KeyguardMonitor;
 
 /** Quick settings tile: PictureInPictureTile **/
 public class PictureInPictureTile extends QSTileImpl<BooleanState> {
+    private final KeyguardMonitor mKeyguard;
 
     public PictureInPictureTile(QSHost host) {
         super(host);
+        mKeyguard = Dependency.get(KeyguardMonitor.class);
     }
 
     @Override
@@ -50,7 +55,21 @@ public class PictureInPictureTile extends QSTileImpl<BooleanState> {
 
     @Override
     public void handleClick() {
-        mHost.collapsePanels();
+        if (mKeyguard.isSecure() && mKeyguard.isShowing()) {
+            Dependency.get(ActivityStarter.class).postQSRunnableDismissingKeyguard(() -> {
+                onClick(true);
+            });
+            return;
+        }
+        onClick(mKeyguard.isShowing());
+    }
+
+    private void onClick(boolean forceCollapse){
+        if (forceCollapse){
+            mHost.forceCollapsePanels();
+        }else{
+            mHost.collapsePanels();
+        }
         ActivityInfo ai = CustomUtils.getRunningActivityInfo(mContext);
         if (ai != null && !ai.supportsPictureInPicture()) {
             Toast.makeText(mContext, mContext.getString(

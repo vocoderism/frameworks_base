@@ -38,6 +38,9 @@ import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.internal.app.LocalePicker;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.systemui.Dependency;
+import com.android.systemui.plugins.ActivityStarter;
+import com.android.systemui.statusbar.policy.KeyguardMonitor;
 
 import java.util.Locale;
 
@@ -53,10 +56,12 @@ public class LocaleTile extends QSTileImpl<State> {
 
     // Allow multiple clicks to find the desired locale without immediately applying
     private static final int TOGGLE_DELAY = 800;
+    private final KeyguardMonitor mKeyguard;
 
     public LocaleTile(QSHost host) {
         super(host);
         updateLocaleList();
+        mKeyguard = Dependency.get(KeyguardMonitor.class);
     }
 
     @Override
@@ -66,13 +71,31 @@ public class LocaleTile extends QSTileImpl<State> {
 
     @Override
     protected void handleClick() {
-        if (checkToggleDisabled()) return;
-        toggleLocale();
+        handleClickOrSecondaryClick();
     }
 
     @Override
     protected void handleSecondaryClick() {
+        handleClickOrSecondaryClick();
+    }
+    
+    private void handleClickOrSecondaryClick(){
+        if (mKeyguard.isSecure() && mKeyguard.isShowing()) {
+            Dependency.get(ActivityStarter.class).postQSRunnableDismissingKeyguard(() -> {
+                onClick(true);
+            });
+            return;
+        }
+        onClick(mKeyguard.isShowing());
+    }
+    
+    private void onClick(boolean forceCollapse){
         if (checkToggleDisabled()) return;
+        if (forceCollapse){
+            mHost.forceCollapsePanels();
+        }else{
+            mHost.collapsePanels();
+        }
         toggleLocale();
     }
 
