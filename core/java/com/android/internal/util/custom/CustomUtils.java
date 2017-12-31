@@ -18,7 +18,10 @@ package com.android.internal.util.custom;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PackageInfo;
 import android.hardware.input.InputManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Handler;
