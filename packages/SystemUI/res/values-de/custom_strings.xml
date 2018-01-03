@@ -23,40 +23,42 @@
   <!-- volte icon switch -->
   <string name="status_bar_volte">VoLTE</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Dash Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
-  <string name="keyguard_plugged_in_dash_charging">Dash Charging</string>
+  <string name="keyguard_indication_dash_charging_time">Wird schnell aufgeladen (voll in <xliff:g id="verbleibende_Aufladezeit" beispiel="4 Stunden und 2 Minuten">%s</xliff:g>)</string>
+  <string name="keyguard_plugged_in_dash_charging">Schnelles Aufladen</string>
   <!-- PiP Tile -->
   <string name="quick_settings_pip_label">PiP</string>
-  <string name="quick_settings_pip_tile_app_na">App does not support PiP</string>
+  <string name="quick_settings_pip_tile_app_na">Die App unterstützt kein PiP</string>
   <!-- Caffeine QS Tile -->
-  <string name="quick_settings_caffeine_label">Caffeine</string>
-  <string name="accessibility_quick_settings_caffeine_off">Caffeine off</string>
-  <string name="accessibility_quick_settings_caffeine_on">Caffeine on</string>
+  <string name="quick_settings_caffeine_label">Koffein</string>
+  <string name="accessibility_quick_settings_caffeine_off">Koffein aus</string>
+  <string name="accessibility_quick_settings_caffeine_on">Koffein an</string>
   <!-- Sound QS Tile -->
-  <string name="quick_settings_sound_label">Sound</string>
-  <string name="quick_settings_sound_ring">Ring</string>
-  <string name="quick_settings_sound_vibrate">Vibrate</string>
-  <string name="quick_settings_sound_dnd">Do not disturb</string>
+  <string name="quick_settings_sound_label">Töne</string>
+  <string name="quick_settings_sound_ring">Klingeln</string>
+  <string name="quick_settings_sound_vibrate">Vibrieren</string>
+  <string name="quick_settings_sound_dnd">Nicht stören</string>
   <!-- Heads Up QS Tile -->
-  <string name="quick_settings_heads_up_label">Heads up</string>
-  <string name="accessibility_quick_settings_heads_up_off">Heads up off.</string>
-  <string name="accessibility_quick_settings_heads_up_on">Heads up on.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_off">Heads up turned off.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_on">Heads up turned on.</string>
+  <string name="quick_settings_heads_up_label">Pop-up-Benachrichtigungen</string>
+  <string name="accessibility_quick_settings_heads_up_off">Pop-Up Benachrichtigungen aus.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Pop-Up Benachrichtigungen an.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Pop-Up Benachrichtigungen ausgeschaltet.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Pop-Up Benachrichtigungen eingeschaltet.</string>
   <!-- Language toggle tile -->
-  <string name="quick_settings_locale_label">Language</string>
-  <string name="quick_settings_locale_more_locales_toast">Please configure multiple languages to enable toggle functionality</string>
+  <string name="quick_settings_locale_label">Sprache</string>
+  <string name="quick_settings_locale_more_locales_toast">Bitte richten Sie mehrere Sprachen ein, um die Umschaltfunktion zu aktivieren</string>
   <!-- Reboot/Recovery QS Tile -->
-  <string name="quick_settings_reboot_label">Reboot</string>
+  <string name="quick_settings_reboot_label">Neustart</string>
   <string name="quick_settings_reboot_recovery_label">Recovery</string>
   <!-- Screenshot QS tile -->
   <string name="quick_settings_screenshot_label">Screenshot</string>
-  <string name="quick_settings_region_screenshot_label">Partial screenshot</string>
+  <string name="quick_settings_region_screenshot_label">Partieller Screenshot</string>
   <!-- VPN icon -->
   <string name="status_bar_vpn">VPN</string>
   <!-- Lockscreen tuner -->
-  <string name="lockscreen_default">Default</string>
-  <string name="lockscreen_hidden">None</string>
+  <string name="lockscreen_default">Standart</string>
+  <string name="lockscreen_hidden">Kein</string>
   <!-- Shows when people have clicked on the custom lockscreen shortcut [CHAR LIMIT=60] -->
-  <string name="custom_hint">Swipe from icon to launch</string>
+  <string name="custom_hint">Zum Öffnen über das Symbol wischen</string>
+  <!-- Screenshot Delete Toast -->
+  <!-- Global actions -->
 </resources>
