@@ -158,6 +158,7 @@ interface ISub {
     int setDataRoaming(int roaming, int subId);
 
     int getSlotIndex(int subId);
+    int getSlotId(int subId);
 
     int[] getSubId(int slotIndex);
 
