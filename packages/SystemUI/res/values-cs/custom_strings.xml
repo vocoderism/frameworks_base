@@ -23,40 +23,42 @@
   <!-- volte icon switch -->
   <string name="status_bar_volte">VoLTE</string>
   <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
-  <string name="keyguard_indication_dash_charging_time">Dash Charging (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> until full)</string>
-  <string name="keyguard_plugged_in_dash_charging">Dash Charging</string>
+  <string name="keyguard_indication_dash_charging_time">DASH nabíjení (plně nabito za <xliff:g id="CHARGING_TIME_LEFT">%s</xliff:g>)</string>
+  <string name="keyguard_plugged_in_dash_charging">DASH nabíjení</string>
   <!-- PiP Tile -->
   <string name="quick_settings_pip_label">PiP</string>
-  <string name="quick_settings_pip_tile_app_na">App does not support PiP</string>
+  <string name="quick_settings_pip_tile_app_na">Aplikace nepodporuje PiP</string>
   <!-- Caffeine QS Tile -->
-  <string name="quick_settings_caffeine_label">Caffeine</string>
-  <string name="accessibility_quick_settings_caffeine_off">Caffeine off</string>
-  <string name="accessibility_quick_settings_caffeine_on">Caffeine on</string>
+  <string name="quick_settings_caffeine_label">Kofein</string>
+  <string name="accessibility_quick_settings_caffeine_off">Kofein vyp.</string>
+  <string name="accessibility_quick_settings_caffeine_on">Kofein zap.</string>
   <!-- Sound QS Tile -->
-  <string name="quick_settings_sound_label">Sound</string>
-  <string name="quick_settings_sound_ring">Ring</string>
-  <string name="quick_settings_sound_vibrate">Vibrate</string>
-  <string name="quick_settings_sound_dnd">Do not disturb</string>
+  <string name="quick_settings_sound_label">Zvuk</string>
+  <string name="quick_settings_sound_ring">Vyzvánění</string>
+  <string name="quick_settings_sound_vibrate">Vibrace</string>
+  <string name="quick_settings_sound_dnd">Nerušit</string>
   <!-- Heads Up QS Tile -->
-  <string name="quick_settings_heads_up_label">Heads up</string>
-  <string name="accessibility_quick_settings_heads_up_off">Heads up off.</string>
-  <string name="accessibility_quick_settings_heads_up_on">Heads up on.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_off">Heads up turned off.</string>
-  <string name="accessibility_quick_settings_heads_up_changed_on">Heads up turned on.</string>
+  <string name="quick_settings_heads_up_label">Plovoucí upozornění</string>
+  <string name="accessibility_quick_settings_heads_up_off">Vypnout plovoucí upozornění.</string>
+  <string name="accessibility_quick_settings_heads_up_on">Zapnout plovoucí upozornění.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_off">Plovoucí upozornění vypnuto.</string>
+  <string name="accessibility_quick_settings_heads_up_changed_on">Plovoucí upozornění zapnuto.</string>
   <!-- Language toggle tile -->
-  <string name="quick_settings_locale_label">Language</string>
-  <string name="quick_settings_locale_more_locales_toast">Please configure multiple languages to enable toggle functionality</string>
+  <string name="quick_settings_locale_label">Jazyk</string>
+  <string name="quick_settings_locale_more_locales_toast">Prosím nastavte přepínač umožňující více jazyků</string>
   <!-- Reboot/Recovery QS Tile -->
-  <string name="quick_settings_reboot_label">Reboot</string>
+  <string name="quick_settings_reboot_label">Restartovat</string>
   <string name="quick_settings_reboot_recovery_label">Recovery</string>
   <!-- Screenshot QS tile -->
-  <string name="quick_settings_screenshot_label">Screenshot</string>
-  <string name="quick_settings_region_screenshot_label">Partial screenshot</string>
+  <string name="quick_settings_screenshot_label">Snímek obrazovky</string>
+  <string name="quick_settings_region_screenshot_label">Částečný snímek obrazovky</string>
   <!-- VPN icon -->
-  <string name="status_bar_vpn">VPN</string>
+  <string name="status_bar_vpn">Síť VPN</string>
   <!-- Lockscreen tuner -->
-  <string name="lockscreen_default">Default</string>
-  <string name="lockscreen_hidden">None</string>
+  <string name="lockscreen_default">Výchozí</string>
+  <string name="lockscreen_hidden">Nic</string>
   <!-- Shows when people have clicked on the custom lockscreen shortcut [CHAR LIMIT=60] -->
-  <string name="custom_hint">Swipe from icon to launch</string>
+  <string name="custom_hint">Spustit přejetím prstem od ikony</string>
+  <!-- Screenshot Delete Toast -->
+  <!-- Global actions -->
 </resources>
