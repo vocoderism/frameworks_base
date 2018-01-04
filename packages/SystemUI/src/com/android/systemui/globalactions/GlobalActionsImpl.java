@@ -101,7 +101,7 @@ public class GlobalActionsImpl implements GlobalActions {
         message.setTypeface(Typeface.create("google-sans",Typeface.NORMAL));
 
         boolean mIsReboot = isReboot;
-        if (reason != null && (PowerManager.REBOOT_BOOTLOADER.equals(reason) || PowerManager.REBOOT_RECOVERY.equals(reason)) {
+        if (reason != null && (PowerManager.REBOOT_BOOTLOADER.equals(reason) || PowerManager.REBOOT_RECOVERY.equals(reason))) {
             mIsReboot = true;
         }
 
